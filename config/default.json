@@ -1,0 +1,6 @@
+{
+  "dogApiUrl": "https://dog.ceo/api",
+  "logging": {
+    "level": "info"
+  }
+}

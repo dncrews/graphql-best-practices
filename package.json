@@ -1,0 +1,51 @@
+{
+  "name": "@dncrews/graphql-best-practices",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "local": "NODE_ENV=${NODE_ENV:-development} nodemon ./interfaces/server",
+    "mocha": "NODE_ENV=${NODE_ENV:-testing} mocha",
+    "test": "npm mocha -- --opts ./test/mocha.opts",
+    "test:watch": "npm mocha -- --opts ./test/mocha.opts -w -b -R min"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^2.7.0-alpha.3",
+    "axios": "^0.19.0",
+    "bunyan": "^1.8.12",
+    "config": "^3.1.0",
+    "graphql": "^14.4.1",
+    "graphql-relay": "^0.6.0",
+    "graphql-tag": "^2.10.1",
+    "graphql-tools": "^4.0.5"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.0.0",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test && npm lint",
+      "commitmsg": "commitlint -e $GIT_PARAMS"
+    }
+  }
+}
