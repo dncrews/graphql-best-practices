@@ -1,4 +1,5 @@
 const { ApolloServer } = require('apollo-server');
+const { uuidv4 } = require('uuid/v4');
 
 const { schema } = require('../graphql/schema');
 const { buildContext } = require('../lib/build-context');
@@ -8,6 +9,7 @@ const server = new ApolloServer({
   context({ req }) {
     return buildContext({
       viewer: req.user,
+      requestId: req.headers['request-id'] || uuidv4(),
     });
   },
 });

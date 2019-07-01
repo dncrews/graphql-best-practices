@@ -13,7 +13,10 @@
  *     "query": "query GetBreeds { breeds { edges { node { id } } } }",
  *     "variables": {},
  *     "operationName": "GetBreeds",
- *     "viewer": {}
+ *     "context": {
+ *       "viewer": {},
+ *       "requestId": ""
+ *     }
  *   }
  * }
  * ```
@@ -25,10 +28,11 @@ const { schema } = require('../graphql/schema');
 const { buildContext } = require('../lib/build-context');
 
 const graphqlHandler = (event, awsContext, cb) => {
-  const { query, variables, operationName, viewer } = event;
+  const { query, variables, operationName, context } = event;
 
   const graphqlContext = buildContext({
-    viewer,
+    viewer: context.viewer,
+    requestId: context.requestId,
   });
   const rootValue = null;
 
