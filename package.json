@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "jest": "NODE_ENV=${NODE_ENV:-testing} jest",
     "lint": "eslint .",
     "local": "NODE_ENV=${NODE_ENV:-development} nodemon ./interfaces/server",
-    "mocha": "NODE_ENV=${NODE_ENV:-testing} mocha",
-    "test": "npm mocha -- --opts ./test/mocha.opts",
-    "test:watch": "npm mocha -- --opts ./test/mocha.opts -w -b -R min"
+    "test": "npm run jest",
+    "test:watch": "npm run jest -- --watchAll"
   },
   "keywords": [],
   "author": "",
@@ -27,15 +27,14 @@
   "devDependencies": {
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
+    "@types/jest": "^24.0.15",
     "body-parser": "^1.19.0",
-    "chai": "^4.2.0",
     "eslint": "^6.0.1",
     "eslint-config-prettier": "^6.0.0",
     "husky": "^3.0.0",
+    "jest": "^24.8.0",
     "lint-staged": "^9.0.0",
-    "mocha": "^6.1.4",
     "nodemon": "^1.19.1",
-    "nyc": "^14.1.1",
     "prettier": "^1.18.2"
   },
   "commitlint": {
@@ -48,5 +47,9 @@
       "pre-push": "npm test && npm lint",
       "commitmsg": "commitlint -e $GIT_PARAMS"
     }
+  },
+  "jest": {
+    "collectCoverage": true,
+    "verbose": true
   }
 }

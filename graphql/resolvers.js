@@ -36,7 +36,7 @@ exports.resolvers = {
        * but things like "length" will not be checked. A value of `""` is
        * still a valid string, so always make sure you validate your input.
        */
-      assert(nodeId.length > 0, 'breedById requires an ID be passed');
+      assert(nodeId.length > 0, 'breedById requires an ID to be provided');
       const { id } = fromGlobalId(nodeId);
 
       return context.loaders.breeds.load(id);
