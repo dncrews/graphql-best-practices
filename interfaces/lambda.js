@@ -25,7 +25,7 @@ const { graphql } = require('graphql');
 
 const { promisify } = require('../lib/lambda-promisify');
 const { schema } = require('../graphql/schema');
-const { buildContext } = require('../lib/build-context');
+const { buildContext } = require('../lib/build-graphql-context');
 
 const graphqlHandler = (event, awsContext, cb) => {
   const { query, variables, operationName, context } = event;

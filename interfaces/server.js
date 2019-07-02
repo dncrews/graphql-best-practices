@@ -2,7 +2,7 @@ const { ApolloServer } = require('apollo-server');
 const uuidv4 = require('uuid/v4');
 
 const { schema } = require('../graphql/schema');
-const { buildContext } = require('../lib/build-context');
+const { buildContext } = require('../lib/build-graphql-context');
 
 const server = new ApolloServer({
   schema,
