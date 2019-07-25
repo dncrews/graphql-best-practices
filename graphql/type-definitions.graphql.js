@@ -283,7 +283,6 @@ exports.typeDefs = gql`
   (This is the exact same as the Connection, but with the suffix changed)
   """
   type ViewerBreedsEdge {
-    cursor: ID!
     node: Breed!
     favorited: Boolean!
   }
